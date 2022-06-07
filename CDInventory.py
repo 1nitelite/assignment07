@@ -9,7 +9,7 @@ NToulas, 2022-Jun-06, Modified script
 import pickle
 
 # -- DATA -- #
-strChoice = '' # User input
+strChoice = ''  # User input
 lstTbl = []  # list of lists to hold data
 dicRow = {}  # list of data row
 STR_FILE_NAME = 'CDInventory.dat'  # data storage file
@@ -75,7 +75,7 @@ class FileProcessor:
             table (list of dict): 2D data structure (list of dicts) that holds the data during runtime
 
         Returns:
-            None.
+            table (list of dict): 2D data structure (list of dicts) that holds the data during runtime.
         """
         table.clear()  # this clears existing data and allows to load data from file
         try:
@@ -169,8 +169,7 @@ class IO:
         str_id = int(input('Enter ID: ').strip())
         str_title = input('What is the CD\'s title? ').strip()
         st_artist = input('What is the Artist\'s name? ').strip()
-        result = (str_id, str_title, st_artist)
-        return result
+        return str_id, str_title, st_artist
 
 
 # 1. When program starts, read in the currently saved Inventory
