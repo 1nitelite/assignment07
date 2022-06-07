@@ -81,9 +81,10 @@ class FileProcessor:
         try:
             with open(file_name, 'rb') as file:
                 data = pickle.load(file)
-            print(type(data))
-            return data
-        except FileNotFoundError as error:
+            for line in data:
+                table.append(line)
+            return table
+        except FileNotFoundError:
             print('File does not exist')
 
     @staticmethod
@@ -161,10 +162,6 @@ class IO:
     def ask_for_cd_info():
         """Prompts user for CD info
 
-
-        Args:
-            table (list of dict): 2D data structure (list of dicts) that holds the data during runtime.
-
         Returns:
             result: list of user input (ID, CD title, artist)
 
@@ -178,9 +175,9 @@ class IO:
 
 # 1. When program starts, read in the currently saved Inventory
 try:
-    lstTbl.append(FileProcessor.read_file(STR_FILE_NAME, lstTbl))
+    FileProcessor.read_file(STR_FILE_NAME, lstTbl)
 except EOFError as error:
-    print('There are nothing in your inventory')
+    print('There is nothing in your inventory')
 
 # 2. start main loop
 while True:
@@ -195,7 +192,7 @@ while True:
     # 3.2 process load inventory
     if strChoice == 'l':
         print('WARNING: If you continue, all unsaved data will be lost and the Inventory re-loaded from file.')
-        strYesNo = input('type \'yes\' to continue and reload from file. otherwise reload will be canceled')
+        strYesNo = input('type \'yes\' to continue and reload from file. otherwise reload will be canceled ')
         if strYesNo.lower() == 'yes':
             print('reloading...')
             FileProcessor.read_file(STR_FILE_NAME, lstTbl)
