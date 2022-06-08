@@ -166,7 +166,7 @@ class IO:
             result: list of user input (ID, CD title, artist)
 
         """
-        str_id = int(input('Enter ID: ').strip())
+        str_id = input('Enter ID: ').strip()
         str_title = input('What is the CD\'s title? ').strip()
         st_artist = input('What is the Artist\'s name? ').strip()
         return str_id, str_title, st_artist
